@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="307.0" prefWidth="558.0" style="-fx-background-radius: 30px;" xmlns="http://javafx.com/javafx/8.0.271" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cryptoapplication.MoussaController">
+   <children>
+      <ImageView fitHeight="316.0" fitWidth="573.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../jou.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="2.0" layoutY="-1.0" prefHeight="307.0" prefWidth="558.0">
+         <children>
+            <ImageView fitHeight="231.0" fitWidth="551.0" layoutX="63.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Header_Encryption.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="Annuler" layoutX="294.0" layoutY="251.0" mnemonicParsing="false" onAction="#handleButtonAction3" opacity="0.89" prefHeight="31.0" prefWidth="143.0" style="-fx-background-color: red; -fx-background-radius: 10px;" text="Annuler" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Text fill="#0084ff" fontSmoothingType="LCD" layoutX="284.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode De Chiffrement" wrappingWidth="240.966796875">
+               <font>
+                  <Font name="Algerian" size="22.0" />
+               </font>
+            </Text>
+            <Label fx:id="chiffre" layoutY="216.0" opacity="0.0" prefHeight="17.0" prefWidth="143.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="426.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #25821D;" text="Methode" textFill="WHITE">
+              <items>
+                  
+                <MenuItem fx:id="Affine" mnemonicParsing="false" onAction="#handleButtonAction1" style="-fx-background-color: #e1bd23 ;-fx-background-radius: 5px;"  text="Affine" />
+                <MenuItem fx:id="substitution" mnemonicParsing="false"  onAction="#handleButtonAction2" style="-fx-background-color: #fe3700;-fx-background-radius: 5px;"  text="substitution"  />
+              </items>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               
+              
+            </MenuButton>
+            <Button fx:id="Valider" layoutX="96.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnValider" opacity="0.91" prefHeight="31.0" prefWidth="143.0" style="-fx-background-color: blue; -fx-background-radius: 10px;" text="Valider" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="message" layoutX="22.0" layoutY="174.0" prefHeight="42.0" prefWidth="149.0" style="-fx-background-radius: 15px;" textFill="#2cc611">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
