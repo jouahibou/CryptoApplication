@@ -37,7 +37,7 @@ import javafx.stage.Stage;
  *
  * @author Lenovo
  */
-public class FXMLDocumentController implements Initializable {
+public class FirstInterfaceController implements Initializable {
 
    
     @FXML
@@ -67,7 +67,7 @@ public class FXMLDocumentController implements Initializable {
             
         
            
-            /*la on recupére les variables dans le textfield */
+            /*there we get the variables in the textfield */
              String nom = noms.getText();
              String prenon =prénoms.getText();
              String  num = numéro.getText();
@@ -78,9 +78,10 @@ public class FXMLDocumentController implements Initializable {
             List<String> p = new ArrayList<>();
            
            
-           /*on a d'abord cree une liste puis on recupére au hasard un caractére dans chaque champ
-           que l'on ajoute a la liste on a d'abord commencer par le champ noms ensuite par le champ 
-           prenom et enfin par le champ numero de telepone */
+           /*we first created a list then we randomly retrieve a character in each field
+           that we add to the list we first start with the names field then with the field
+           first name and finally by the telepone number field */
+           
             Random rand = new Random();
            int k = rand.nextInt(nom.length());
            String strVar = Character.toString(nom.charAt(k));
@@ -111,21 +112,26 @@ public class FXMLDocumentController implements Initializable {
            Random rand3 = new Random();
            int a = rand3.nextInt(8);
            
-           /* ici on a gére aléatoirement en entier a compris en 0 et 8 que l'on 
-           introduit dans la fonction random ce qui va nous permettre d'avoir 
-           des permutation */
+           /* here we have managed randomly in full and understood in 0 and 8 that we
+           introduced in the random function which will allow us to have
+           permutations */
+           
            Collections.shuffle(p, new Random(a));
-          // System.out.println(p.size());
-           System.out.println("Le code initial est  : " +p);
+          
+           
+           System.out.println(" The initial code  : " +p);
               
            
                
            
-           
+          /* the FXMLDocument.fxml file is called is called
+           this is the interface
+           */
+     
                 
-             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Jouahibou.fxml"));
+             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SecondInterface.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            MoussaController controllerchif = fxmlLoader.getController();
+            SecondInterfaceController controllerchif = fxmlLoader.getController();
             Stage stage= (Stage)( (Node) (event.getSource())).getScene().getWindow();
             stage.setScene(new Scene(root1));
             stage.show();
@@ -144,8 +150,8 @@ public class FXMLDocumentController implements Initializable {
               //  e.printStackTrace();
           
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("ATTENTION!!!! ATTENTION !!!! ");
-        alert.setContentText("Veuillez vérifier les champs remplis   ");
+                alert.setTitle("Warning!!!! Warning !!!! ");
+        alert.setContentText("Please check the fields  ");
         alert.showAndWait();
                
            
@@ -157,18 +163,18 @@ public class FXMLDocumentController implements Initializable {
         }}
     
     
-    public String Alertes(){
+    public String Prenon_Nom(){
         
         String a =prenon1+" "+nom1;
        
         return a;
         
     }
-    public String NOMBI(){
+    public String Nom(){
         String s = nom1;
         return s;
     }
-    public String PRENOM(){
+    public String Prenom(){
         String w = prenon1;
         return w;
     }

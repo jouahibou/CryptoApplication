@@ -48,7 +48,7 @@ import javax.crypto.SecretKey;
  *
  * @author Lenovo
  */
-public class MoussaController implements Initializable {
+public class SecondInterfaceController implements Initializable {
      
      public Label chiffre;
      public Label message;
@@ -60,23 +60,33 @@ public class MoussaController implements Initializable {
      int Fine1;
      int Fine;
       String a ="";
-     String s ="";
-     String w ="";
-     String z;
+     String firstName ="";
+     String name ="";
+     String firstName_Name ;
      
       public  String codefin;
       public int l ;
       
        public  Connection connectrDB( ) throws IOException{
             Parent joe = fxmlLoader.load();
-            FXMLDocumentController cc = fxmlLoader.getController();
-            FXMLDocumentController cc1 = fxmlLoader.getController();
-            FXMLDocumentController cc2 = fxmlLoader.getController();
-            z = cc.Alertes();
-            s= cc1.NOMBI();
-            w =cc2.PRENOM();
+            
+            
+            /*
+            I instantiate a jouahibou type object to have access to it's methods
+            */
+            FirstInterfaceController cc = fxmlLoader.getController();
+            FirstInterfaceController  cc1 = fxmlLoader.getController();
+            FirstInterfaceController cc2 = fxmlLoader.getController();
+            
+            firstName_Name = cc.Prenon_Nom();
+            firstName= cc1.Nom();
+            name =cc2.Prenom();
             
         try{
+            
+            /*
+            connection then insertion of the name, first name and code of the customer in the database
+            */
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.print("Driver ok");
             String url = "jdbc:mysql://localhost:3306/crypto";
@@ -84,8 +94,8 @@ public class MoussaController implements Initializable {
             String password="";
             Connection cn = DriverManager.getConnection(url,user,password);
             PreparedStatement st = cn.prepareStatement("insert into utilisateur (Prenom,nom,code) values(?,?,?)");
-            st.setString(1,w);
-            st.setString(2,s);
+            st.setString(1,name);
+            st.setString(2,firstName);
             st.setString(3,codefin);
             
             st.executeUpdate();
@@ -97,13 +107,18 @@ public class MoussaController implements Initializable {
         }
     }
      
-     
+     /*
+       This method will allow me to recover the initial code for the encrypted one
+       */
     public void affiche(String code)
     {
 
         chiffre.setText(code);
     }
     
+    /*
+    This method will allow me to recover the encrypted
+    */
     public void affiche1(String code1){
         
         message.setText(code1);
@@ -115,13 +130,10 @@ public class MoussaController implements Initializable {
       verificateur = true;
         try{
             String joua = chiffre.getText().toUpperCase();
-            if (j.size()>0){
-                
-            }
+           
              
            
-            
-             a="";
+              a="";
            char[] tab1 = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9'};
              
              for (int i=0;i<8;i++){
@@ -144,6 +156,9 @@ public class MoussaController implements Initializable {
         }
         }
     
+  /*
+  the rest of the code you just need to understand the affine and substitution cipher
+  */
     
     public void handleButtonAction2(ActionEvent event) throws IOException {
         verificateur = true ;
@@ -182,7 +197,7 @@ public class MoussaController implements Initializable {
         
         try{
             
-             FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+             FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("FirstInterface.fxml"));
              
             Parent root1 = (Parent) fxmlLoader1.load();
             Stage stage= (Stage)( (Node) (event.getSource())).getScene().getWindow();
@@ -193,12 +208,12 @@ public class MoussaController implements Initializable {
             e.printStackTrace();
         }
         }
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FirstInterface.fxml"));
     public void btnValider(ActionEvent event) throws IOException {
        if (!verificateur){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(" MODE DE CHIFFREMENT ");
-        alert.setContentText("Vous avez oublié de choisir le mode de chiffrement ");
+        alert.setTitle(" Encryption Mode ");
+        alert.setContentText("please select the encryption mode ");
         alert.showAndWait();
             
         }
@@ -214,9 +229,9 @@ public class MoussaController implements Initializable {
            
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("FELICITATION !!!! FELICITATION!!!! ");
-        alert.setContentText("Vous avez crée un code pour "+z+" : "+codefin);
+        alert.setContentText("the code for "+firstName_Name+" : is  "+codefin);
         alert.showAndWait();
-         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("FirstInterface.fxml"));
              
             Parent root1 = (Parent) fxmlLoader1.load();
             Stage stage= (Stage)( (Node) (event.getSource())).getScene().getWindow();

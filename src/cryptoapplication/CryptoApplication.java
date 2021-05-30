@@ -18,23 +18,30 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Lenovo
+ * @author jouahibou
  */
 public class CryptoApplication extends Application {
 
     private static Connection connectrDB() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
    
+    
+    /**
+     * 
+     * when we launch the application the FXMLDocument.fxml file is called is called
+     *  this is the interface
+     * @param stage
+     * @throws java.lang.Exception
+     */
     
     @Override
     public void start(Stage stage) throws Exception {
         
-        FXMLLoader loader =new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("FirstInterface.fxml"));
         
          Parent root = loader.load();
-         FXMLDocumentController controller = loader.getController();
+         FirstInterfaceController controller = loader.getController();
          
         Scene scene = new Scene(root);
         stage.setScene(scene);
