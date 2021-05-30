@@ -124,7 +124,7 @@ public class FirstInterfaceController implements Initializable {
            
                
            
-          /* the FXMLDocument.fxml file is called is called
+          /* the SecondInterface.fxml file is called 
            this is the interface
            */
      
